@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { DataGrid } from '@mui/x-data-grid';
 import ApiService from "../../service/ApiService";
-import { useState, useEffect } from "react";
+import AddProduto from "../AddProduto/AddProduto";
+import './ListProduto.css';
 
 const columns = [
     { field: 'id', headerName: 'ID', width: 90 },
@@ -47,16 +48,26 @@ const ListProduto = () => {
           }, []);     
         
     return (
-        <div className="card">
-            <div style={{ height: 400, width: '100%' }} className="">
-                <DataGrid
-                    rows={produtos}
-                    columns={columns}
-                    pageSize={5}
-                    rowsPerPageOptions={[5]}
-                    checkboxSelection
-                    disableSelectionOnClick
-                />
+
+        <div className="row">
+
+            <div className="col">
+                <AddProduto/>
+            </div>
+
+            <div className="col w-100">
+                <div className="card">
+                    <div style={{ height: 400, width: '800px' }} className="bg-light">
+                        <DataGrid
+                            rows={produtos}
+                            columns={columns}
+                            pageSize={5}
+                            rowsPerPageOptions={[5]}
+                            checkboxSelection
+                            disableSelectionOnClick
+                        />
+                    </div>
+                </div>
             </div>
         </div>
 
